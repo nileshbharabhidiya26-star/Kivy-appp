@@ -2,6 +2,7 @@
 title = BGMI Freeze
 package.name = bgmifreeze
 package.domain = org.test
+version = 1.0
 source.dir = .
 main.py = main.py
 requirements = python3,kivy
