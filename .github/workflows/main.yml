@@ -1,8 +1,8 @@
-name: DdosXindia
+name: Build Kivy APK
 
 on:
-  push:
   workflow_dispatch:
+  push:
 
 jobs:
   build:
@@ -10,17 +10,22 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/upload-artifact@v4
+      uses: actions/checkout@v4
 
     - name: Install dependencies
       run: |
         sudo apt update
         sudo apt install -y python3-pip git zip unzip openjdk-17-jdk
         pip install --upgrade pip
-        pip install buildozer cython
+        pip install buildozer cython kivy
 
-    - name: Find APK files
-      run: find . -type f -name "*.apk"
+    - name: Build APK
+      run: |
+        buildozer init || true
+        buildozer -v android debug
+
+    - name: Check APK location
+      run: find . -name "*.apk"
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
