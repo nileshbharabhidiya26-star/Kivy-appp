@@ -1,13 +1,28 @@
 [app]
-title = BGMI Freeze
-package.name = bgmifreeze
+
+title = Bgmi×DDoS
+package.name = bgmiddos
 package.domain = org.test
-version = 1.0
+
 source.dir = .
-main.py = main.py
+source.include_exts = py,png,jpg,kv
+
+version = 1.0
+
 requirements = python3,kivy
+
+orientation = portrait
+fullscreen = 0
+
 android.api = 33
 android.minapi = 21
 android.ndk = 25b
-# Important: Keep app running in background
-android.exit_on_pause = 0
+
+# (str) Presplash of the application
+presplash.filename =
+
+# (str) Icon of the application
+icon.filename =
+
+# (list) Permissions
+android.permissions = INTERNET
