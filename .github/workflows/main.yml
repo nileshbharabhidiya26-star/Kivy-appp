@@ -1,54 +1,43 @@
-name: Build Kivy APK
+name: Build
 
 on:
   push:
-  workflow_dispatch:
+    branches:
+      - main
+      - master
+
+  pull_request:
+    branches:
+      - main
+      - master
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      # Checkout repository
+      - name: Checkout Code
+        uses: actions/checkout@v5
 
-    - name: Install system tools
-      run: |
-        sudo apt update
-        sudo apt install -y python3-pip git zip unzip openjdk-17-jdk
+      # Setup Node.js 24
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
 
-    - name: Install Python packages
-      run: |
-        pip install --upgrade pip
-        pip install buildozer cython kivy
+      # Install dependencies
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Create buildozer.spec if missing
-      run: |
-        buildozer init || true
+      # Build project
+      - name: Build Project
+        run: npm run build
 
-    
-    - name: Accept licenses
-  run: |
-    yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
-
-    - name: Install Android packages
-  run: |
-    /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager \
-    "platform-tools" \
-    "platforms;android-33" \
-    "build-tools;33.0.0"
-
-    - name: Build APK
-      run: |
-        buildozer android debug
-
-    - name: Find APK
-      run: |
-        find . -name "*.apk"
-
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: apk
-        path: |
-          **/*.apk
+      # Run tests (optional)
+      - name: Run Tests
+        run: npm test
