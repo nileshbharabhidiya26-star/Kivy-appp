@@ -19,10 +19,10 @@ jobs:
         pip install --upgrade pip
         pip install buildozer cython kivy
 
-    - name: Build APK
-      run: |
-        buildozer init || true
-        buildozer -v android debug
+     - name: Build APK
+  run: |
+    yes | sdkmanager --licenses || true
+    buildozer android debug
 
     - name: Check APK location
       run: find . -name "*.apk"
