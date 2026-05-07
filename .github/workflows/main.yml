@@ -26,18 +26,17 @@ jobs:
       run: |
         buildozer init || true
 
-    - name: Accept Android licenses
-      run: |
-        mkdir -p ~/.android
-        touch ~/.android/repositories.cfg
-        yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
+    
+    - name: Accept licenses
+  run: |
+    yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
-    - name: Install Android SDK packages
-      run: |
-        /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager \
-        "platform-tools" \
-        "platforms;android-33" \
-        "build-tools;33.0.0"
+    - name: Install Android packages
+  run: |
+    /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager \
+    "platform-tools" \
+    "platforms;android-33" \
+    "build-tools;33.0.0"
 
     - name: Build APK
       run: |
