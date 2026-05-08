@@ -48,6 +48,9 @@ android.ndk = 25b
 # (str) Android NDK API
 android.ndk_api = 21
 
+# Accept licenses automatically
+android.accept_sdk_license = True
+
 # (list) Android architectures
 android.archs = arm64-v8a, armeabi-v7a
 
