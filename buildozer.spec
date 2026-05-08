@@ -22,7 +22,8 @@ source.exclude_exts = spec
 source.exclude_dirs = tests, bin, venv, .git
 
 # (str) Application version
-version = 1.0
+version.regex = __version__ = ['"](.*)['"]
+version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
 requirements = python3,kivy
