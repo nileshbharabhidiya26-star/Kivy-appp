@@ -66,9 +66,6 @@ android.enable_androidx = True
 # Permissions
 android.permissions = INTERNET
 
-# (bool) Accept SDK license
-android.accept_sdk_license = True
-
 # Log level
 log_level = 2
 
