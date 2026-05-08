@@ -10,7 +10,7 @@ package.name = kivyapp
 package.domain = org.test
 
 # (str) Source code folder
-source.dir = main.py
+source.dir = .
 
 # (list) Source files to include
 source.include_exts = py,png,jpg,jpeg,kv,atlas,ttf,json
