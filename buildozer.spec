@@ -25,7 +25,7 @@ source.exclude_dirs = tests, bin, venv, .git
 version = 1.0
 
 # (list) Application requirements
-requirements = python3,kivy
+requirements = python3==3.10.11,kivy==2.2.1
 
 # (str) Orientation
 orientation = portrait
