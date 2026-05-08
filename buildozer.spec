@@ -125,8 +125,6 @@ android.release_artifact = apk
 android.presplash_color = #FFFFFF
 
 # (bool) Numeric version
-version.regex = __version__ = ['"](.*)['"]
-version.filename = %(source.dir)s/main.py
 
 # Include patterns
 source.include_patterns = assets/*,images/*
